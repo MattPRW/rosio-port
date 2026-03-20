@@ -56,11 +56,25 @@ body {
   font-size: 1rem;
   line-height: 1.7;
   color: var(--black);
-  background: var(--white);
+  background: var(--off-white);
   overflow-x: hidden;
   /* Crisp font rendering on retina */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Page frame — constrains content on very wide screens --- */
+.page-frame {
+  max-width: 1440px;
+  margin: 0 auto;
+  background: var(--white);
+  position: relative;
+}
+
+@media (min-width: 1441px) {
+  .page-frame {
+    box-shadow: -6px 0 0 var(--black), 6px 0 0 var(--black);
+  }
 }
 
 img, svg { display: block; max-width: 100%; }
@@ -157,6 +171,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 .btn {
   display: inline-flex;
   align-items: center;
+  align-self: flex-start;
   padding: 0.85rem 2rem;
   font-family: var(--font-display);
   font-weight: 700;
