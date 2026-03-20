@@ -622,12 +622,55 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 .offer-item--blue   { border-left-color: var(--blue); }
 .offer-item--yellow { border-left-color: var(--yellow); }
 
+.offer-closing {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--grey-dark);
+  margin-top: var(--space-md);
+}
+
 @media (min-width: 768px) {
   .offer-grid {
     grid-template-columns: 1fr 1fr;
     align-items: start;
     gap: var(--space-lg);
   }
+}
+
+
+/* =============================================================
+   ABOUT ME
+   ============================================================= */
+
+.section--about {
+  background: var(--off-white);
+}
+
+.about-grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+.about-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.about-block h3 {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
 }
 
 
@@ -754,6 +797,34 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--grey);
+}
+
+
+.prior-training {
+  margin-top: var(--space-lg);
+  padding: var(--space-md);
+  background: var(--white);
+  border: var(--border-md);
+}
+
+.prior-training-title {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  color: var(--grey);
+}
+
+.prior-training-list li {
+  font-size: 0.82rem;
+  color: var(--grey-dark);
+  padding: 0.3rem 0;
+  border-bottom: 1px solid rgba(28, 24, 21, 0.08);
+}
+
+.prior-training-list li:last-child {
+  border-bottom: none;
 }
 
 
