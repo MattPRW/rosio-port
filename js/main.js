@@ -26,32 +26,29 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 
 /* --- Mobile navigation toggle --- */
-const navToggle = document.querySelector('.nav-toggle');
-const navMenu   = document.querySelector('.nav-menu');
-
-function openNav() {
-  navToggle.setAttribute('aria-expanded', 'true');
-  navMenu.classList.add('is-open');
-  document.body.style.overflow = 'hidden';
-  // Move focus to first nav link for keyboard users
-  const firstLink = navMenu.querySelector('.nav-link');
-  if (firstLink) firstLink.focus();
-}
+const navToggle  = document.querySelector('.nav-toggle');
+const navMenu    = document.querySelector('.nav-menu');
+const navLinks   = document.querySelectorAll('.nav-link');
+const backdrop   = document.getElementById('nav-backdrop');
 
 function closeNav() {
-  navToggle.setAttribute('aria-expanded', 'false');
   navMenu.classList.remove('is-open');
-  document.body.style.overflow = '';
+  backdrop.classList.remove('is-open');
+  navToggle.setAttribute('aria-expanded', 'false');
 }
 
-if (navToggle && navMenu) {
+if (navToggle && navMenu && backdrop) {
   navToggle.addEventListener('click', () => {
-    const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
-    isOpen ? closeNav() : openNav();
+    const isOpen = navMenu.classList.toggle('is-open');
+    backdrop.classList.toggle('is-open', isOpen);
+    navToggle.setAttribute('aria-expanded', isOpen);
   });
 
-  // Close when a link is clicked
-  navMenu.querySelectorAll('.nav-link').forEach(link => {
+  // Close on backdrop click
+  backdrop.addEventListener('click', closeNav);
+
+  // Close on nav link click
+  navLinks.forEach(link => {
     link.addEventListener('click', closeNav);
   });
 
@@ -60,17 +57,6 @@ if (navToggle && navMenu) {
     if (e.key === 'Escape' && navMenu.classList.contains('is-open')) {
       closeNav();
       navToggle.focus();
-    }
-  });
-
-  // Close if clicked outside on mobile
-  document.addEventListener('click', e => {
-    if (
-      navMenu.classList.contains('is-open') &&
-      !navMenu.contains(e.target) &&
-      !navToggle.contains(e.target)
-    ) {
-      closeNav();
     }
   });
 }
@@ -113,7 +99,6 @@ if (!prefersReducedMotion) {
 
 /* --- Active nav link on scroll --- */
 const sections = document.querySelectorAll('section[id]');
-const navLinks  = document.querySelectorAll('.nav-link');
 
 if (sections.length && navLinks.length) {
   const sectionObserver = new IntersectionObserver((entries) => {
