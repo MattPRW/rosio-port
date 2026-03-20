@@ -258,13 +258,15 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   border-bottom: var(--border-md); /* 4px — refined from 6px */
 }
 
-/* Thin red accent line at the very top — De Stijl colour reference */
+/* Thin accent line at the very top — sits above the black header background */
 .site-header::before {
   content: '';
   position: absolute;
   inset: 0 0 auto 0;
   height: 3px;
   background: var(--accent);
+  top: 0;
+  z-index: 1;
 }
 
 .header-inner {
