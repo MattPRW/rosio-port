@@ -8,8 +8,8 @@
 /* --- Design Tokens --- */
 :root {
   /* Softened primary palette — warm, therapy-appropriate */
-  --red:       #C17B6F;   /* dusty terracotta  */
-  --red-dark:  #A8665B;   /* deeper terracotta — hover state */
+  --accent:      #5C7A5F;   /* muted sage green  */
+  --accent-dark: #4A6450;   /* deeper sage — hover state */
   --blue:      #6B8FA3;   /* muted slate blue  */
   --yellow:    #D4B896;   /* warm sand         */
   --black:     #1C1815;   /* warm near-black   */
@@ -89,7 +89,7 @@ a {
   text-underline-offset: 3px;
   transition: color var(--ease);
 }
-a:hover { color: var(--red); }
+a:hover { color: var(--accent); }
 
 /*
   Paper grain — fixed overlay above all content.
@@ -192,8 +192,8 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 
 .btn--primary:hover,
 .btn--primary:focus-visible {
-  background: var(--red-dark);
-  border-color: var(--red-dark);
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
   color: var(--white);
   outline: none;
 }
@@ -258,7 +258,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   position: absolute;
   inset: 0 0 auto 0;
   height: 3px;
-  background: var(--red);
+  background: var(--accent);
 }
 
 .header-inner {
@@ -392,7 +392,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
     position: absolute;
     left: 0; bottom: -2px;
     width: 0; height: 2px;
-    background: var(--red);
+    background: var(--accent);
     transition: width var(--ease);
   }
 
@@ -438,7 +438,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   flex-direction: column;
   gap: var(--space-sm);         /* tighter on mobile */
   justify-content: center;
-  border-left: 4px solid var(--red);
+  border-left: 4px solid var(--accent);
   padding-left: var(--space-sm); /* less indent on mobile */
 }
 
@@ -454,7 +454,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 
 .hero-headline em {
   font-style: italic;
-  color: var(--red);
+  color: var(--accent);
 }
 
 .hero-body {
@@ -496,7 +496,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   }
 
   .hero-accent-col .accent-block        { flex: 1; }
-  .hero-accent-col .accent-block--red   { flex: 1.6; border-bottom: var(--border-lg); }
+  .hero-accent-col .accent-block--accent   { flex: 1.6; border-bottom: var(--border-lg); }
 
   .hero-content {
     grid-area: content;
@@ -526,7 +526,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   }
 }
 
-.accent-block--red  { background: var(--red); }
+.accent-block--accent  { background: var(--accent); }
 .accent-block--blue { background: var(--blue); }
 
 
@@ -563,7 +563,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   margin-top: 9px; /* optical alignment with Cormorant cap height */
 }
 
-.section-accent--red    { background: var(--red); }
+.section-accent--accent    { background: var(--accent); }
 .section-accent--yellow { background: var(--yellow); }
 .section-accent--white  { background: rgba(248, 244, 238, 0.35); }
 
@@ -618,7 +618,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   line-height: 1.6;
 }
 
-.offer-item--red    { border-left-color: var(--red); }
+.offer-item--accent    { border-left-color: var(--accent); }
 .offer-item--blue   { border-left-color: var(--blue); }
 .offer-item--yellow { border-left-color: var(--yellow); }
 
@@ -663,7 +663,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 
 .credential-card:last-child { border-bottom: none; }
 
-.credential-card--red    { border-left-color: var(--red); }
+.credential-card--accent    { border-left-color: var(--accent); }
 .credential-card--blue   { border-left-color: var(--blue); }
 .credential-card--yellow { border-left-color: var(--yellow); }
 
@@ -730,7 +730,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   padding-left: var(--space-sm);
 }
 
-.testimonial-card--red    { border-left-color: var(--red); }
+.testimonial-card--accent    { border-left-color: var(--accent); }
 .testimonial-card--blue   { border-left-color: var(--blue); }
 .testimonial-card--yellow { border-left-color: var(--yellow); }
 
@@ -871,7 +871,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 }
 
 .cm-a { grid-area: a; background: var(--off-white); }
-.cm-b { grid-area: b; background: var(--red); }
+.cm-b { grid-area: b; background: var(--accent); }
 .cm-c { grid-area: c; background: var(--blue); }
 .cm-d { grid-area: d; background: var(--white); }
 .cm-e { grid-area: e; background: var(--yellow); }

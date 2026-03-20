@@ -5,7 +5,7 @@
 'use strict';
 
 /* --- Colour accent cycling --- */
-const CYCLE = ['blue', 'red', 'yellow'];
+const CYCLE = ['blue', 'accent', 'yellow'];
 
 document.querySelectorAll('.credential-card').forEach((card, i) => {
   card.classList.add(`credential-card--${CYCLE[i % 3]}`);
