@@ -815,7 +815,8 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 .section--contact {
   background: var(--black);
   color: var(--white);
-  border-bottom: none;
+  border-bottom: var(--border-lg);
+  overflow: hidden;
   padding: 0;
 }
 
@@ -829,6 +830,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   width: 100%;
   display: grid;
   min-height: 420px;
+  overflow: hidden;
 }
 
 .contact-content {
@@ -902,6 +904,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 .contact-mondrian-wrap {
   display: none;
   border-left: var(--border-lg);
+  overflow: hidden;
 }
 
 /*
