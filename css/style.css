@@ -232,6 +232,10 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   filter: saturate(0.7) sepia(0.2);
 }
 
+.offer-image-wrap--bright .offer-photo {
+  filter: saturate(0.7) sepia(0.2) brightness(0.8);
+}
+
 /* Scroll reveal */
 .reveal {
   opacity: 0;
