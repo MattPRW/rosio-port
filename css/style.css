@@ -708,8 +708,6 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 .credential-card--accent    { border-left-color: var(--accent); }
 .credential-card--blue   { border-left-color: var(--blue); }
 .credential-card--yellow { border-left-color: var(--yellow); }
-.credential-card--muted  { border-left-color: var(--grey); }
-.credential-card--muted .credential-body h3 { color: var(--grey-dark); }
 
 .credential-year {
   font-family: var(--font-display);
