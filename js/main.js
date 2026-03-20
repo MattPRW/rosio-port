@@ -11,8 +11,12 @@ document.querySelectorAll('.credential-card').forEach((card, i) => {
   card.classList.add(`credential-card--${CYCLE[i % 3]}`);
 });
 
-document.querySelectorAll('.offer-list li').forEach((item, i) => {
-  item.classList.add(`offer-list-item--${CYCLE[i % 3]}`);
+document.querySelectorAll('.offer-item').forEach((item, i) => {
+  item.classList.add(`offer-item--${CYCLE[i % 3]}`);
+});
+
+document.querySelectorAll('.testimonial-card').forEach((card, i) => {
+  card.classList.add(`testimonial-card--${CYCLE[i % 3]}`);
 });
 
 
@@ -77,7 +81,7 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 
 if (!prefersReducedMotion) {
   const revealTargets = document.querySelectorAll(
-    '.credential-card, .offer-list li, .offer-image-wrap, .contact-item, .section-header'
+    '.credential-card, .offer-item, .offer-image-wrap, .contact-item, .testimonial-card, .section-header'
   );
 
   const revealObserver = new IntersectionObserver((entries) => {
