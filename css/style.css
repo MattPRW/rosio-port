@@ -8,8 +8,8 @@
 /* --- Design Tokens --- */
 :root {
   /* Softened primary palette — warm, therapy-appropriate */
-  --accent:      #5C7A5F;   /* muted sage green  */
-  --accent-dark: #4A6450;   /* deeper sage — hover state */
+  --accent:      #B8673A;   /* burnt sienna      */
+  --accent-dark: #9A5530;   /* deeper burnt sienna — hover state */
   --blue:      #6B8FA3;   /* muted slate blue  */
   --yellow:    #D4B896;   /* warm sand         */
   --black:     #1C1815;   /* warm near-black   */
