@@ -213,6 +213,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   height: 100%;
   object-fit: cover;
   object-position: center 10%; /* bias up: keeps face visible when column is very tall */
+  filter: saturate(0.7) sepia(0.2);
 }
 
 /* "What I Offer" — landscape ratio, face in upper portion of frame */
@@ -228,6 +229,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   aspect-ratio: 4 / 3;
   object-fit: cover;
   object-position: center 22%; /* face is upper-centre; prevents cropping to neck */
+  filter: saturate(0.7) sepia(0.2);
 }
 
 /* Scroll reveal */
