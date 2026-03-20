@@ -708,6 +708,8 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 .credential-card--accent    { border-left-color: var(--accent); }
 .credential-card--blue   { border-left-color: var(--blue); }
 .credential-card--yellow { border-left-color: var(--yellow); }
+.credential-card--muted  { border-left-color: var(--grey); }
+.credential-card--muted .credential-body h3 { color: var(--grey-dark); }
 
 .credential-year {
   font-family: var(--font-display);
@@ -743,11 +745,6 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   .qual-grid {
     grid-template-columns: 1fr 2fr;
     align-items: start;
-  }
-
-  .prior-training {
-    grid-column: 2;
-    margin-top: 0;
   }
 }
 
@@ -803,33 +800,6 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   color: var(--grey);
 }
 
-
-.prior-training {
-  margin-top: var(--space-lg);
-  padding: var(--space-md);
-  background: var(--white);
-  border: var(--border-md);
-}
-
-.prior-training-title {
-  text-transform: none;
-  letter-spacing: 0;
-  font-size: 0.82rem;
-  font-weight: 700;
-  margin-bottom: var(--space-sm);
-  color: var(--grey);
-}
-
-.prior-training-list li {
-  font-size: 0.82rem;
-  color: var(--grey-dark);
-  padding: 0.3rem 0;
-  border-bottom: 1px solid rgba(28, 24, 21, 0.08);
-}
-
-.prior-training-list li:last-child {
-  border-bottom: none;
-}
 
 
 /* =============================================================
