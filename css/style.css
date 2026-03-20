@@ -1,0 +1,872 @@
+/* =============================================================
+   ROSIE GLIDDON THERAPY
+   De Stijl / Mondrian — polish pass
+   Mobile-first stylesheet
+   ============================================================= */
+
+
+/* --- Design Tokens --- */
+:root {
+  /* Aged primary palette — warm, not digital-harsh */
+  --red:       #B52319;   /* brick red         */
+  --blue:      #1B3870;   /* ink navy          */
+  --yellow:    #D4A507;   /* golden ochre      */
+  --black:     #1C1815;   /* warm near-black   */
+  --white:     #F8F4EE;   /* warm parchment    */
+  --off-white: #EDE8DF;   /* warm light ground */
+  --grey:      #7D7870;   /* warm mid-grey     */
+  --grey-dark: #4A4540;   /* warm dark-grey    */
+
+  --border-md: 4px solid var(--black);
+  --border-lg: 6px solid var(--black);
+
+  --font-serif:   'Cormorant Garamond', Georgia, serif;
+  --font-display: 'Montserrat', sans-serif;
+  --font-body:    'Inter', sans-serif;
+
+  --space-xs:  0.5rem;   /*  8px */
+  --space-sm:  1rem;     /* 16px */
+  --space-md:  2rem;     /* 32px */
+  --space-lg:  4rem;     /* 64px */
+  --space-xl:  7rem;     /* 112px */
+
+  --max-width: 1160px;
+  --header-h:  60px;
+
+  --ease: 200ms ease;
+}
+
+
+/* --- Reset --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Offset anchor jumps so sticky header never obscures a section heading */
+  scroll-padding-top: var(--header-h);
+  font-size: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--black);
+  background: var(--white);
+  overflow-x: hidden;
+  /* Crisp font rendering on retina */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, svg { display: block; max-width: 100%; }
+ul, ol   { list-style: none; }
+address  { font-style: normal; }
+p        { max-width: 62ch; }
+
+a {
+  color: inherit;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  transition: color var(--ease);
+}
+a:hover { color: var(--red); }
+
+/*
+  Paper grain — fixed overlay above all content.
+  SVG feTurbulence noise tiled at low opacity breaks the
+  flat, perfectly-digital feel without visible artifacting.
+  pointer-events: none ensures it never blocks interactions.
+*/
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.038;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+
+/* --- Accessibility --- */
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -120%;
+  left: var(--space-sm);
+  padding: 0.6rem 1.2rem;
+  background: var(--yellow);
+  color: var(--black);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: var(--border-md);
+  z-index: 9999;
+  transition: top var(--ease);
+}
+.skip-link:focus {
+  top: calc(var(--header-h) + var(--space-sm));
+}
+
+:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
+
+/* --- Typography --- */
+h1, h2 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: 0;
+  text-rendering: optimizeLegibility;
+}
+
+h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+h1 { font-size: clamp(2.8rem, 7vw, 5.5rem); }
+h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
+
+
+/* --- Button --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.85rem 2rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: var(--border-md);
+  cursor: pointer;
+  transition: background var(--ease), color var(--ease), border-color var(--ease);
+}
+
+.btn--primary {
+  background: var(--black);
+  color: var(--white);
+}
+
+.btn--primary:hover,
+.btn--primary:focus-visible {
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--white);
+  outline: none;
+}
+
+
+/* --- Photos --- */
+/*
+  Both photos use object-fit: cover so they fill their container
+  without distortion. object-position is tuned per image to keep
+  the face in frame across all viewport sizes.
+*/
+
+/* Hero portrait — tall column on desktop, fixed-height on mobile */
+.hero-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%; /* bias up: keeps face visible when column is very tall */
+}
+
+/* "What I Offer" — landscape ratio, face in upper portion of frame */
+.offer-image-wrap {
+  margin: 0;
+  border: var(--border-md);
+  overflow: hidden; /* clip image to border-box edges */
+}
+
+.offer-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center 22%; /* face is upper-centre; prevents cropping to neck */
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+
+/* =============================================================
+   HEADER
+   ============================================================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  height: var(--header-h);
+  background: var(--black);
+  border-bottom: var(--border-md); /* 4px — refined from 6px */
+}
+
+/* Thin red accent line at the very top — De Stijl colour reference */
+.site-header::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--red);
+}
+
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+}
+
+/*
+  2×2 Mondrian mark — inline SVG inside the span renders
+  pixel-perfectly on retina; no CSS gradient blurring at small sizes.
+*/
+.logo-mark {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-text {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  color: var(--white);
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+
+/* --- Navigation --- */
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  padding: 8px;
+  transition: border-color var(--ease);
+}
+
+.nav-toggle:focus-visible {
+  border-color: var(--yellow);
+  outline: none;
+}
+
+.nav-toggle-bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  transition: transform var(--ease), opacity var(--ease);
+  transform-origin: center;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) { transform: translateY(7px)  rotate(45deg);  }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile nav overlay */
+.nav-menu {
+  display: none;
+  position: fixed;
+  inset: var(--header-h) 0 0 0;
+  background: var(--black);
+  padding: var(--space-lg) var(--space-md);
+  flex-direction: column;
+  gap: var(--space-md);
+  z-index: 190;
+  overflow-y: auto;
+}
+
+.nav-menu.is-open { display: flex; }
+
+.nav-link {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2rem;
+  color: var(--white);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: block;
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid rgba(248, 244, 238, 0.1);
+  transition: color var(--ease);
+}
+
+.nav-link:hover,
+.nav-link[aria-current] { color: var(--yellow); }
+
+/* Desktop nav */
+@media (min-width: 768px) {
+  .nav-toggle { display: none; }
+
+  .nav-menu {
+    display: flex !important;
+    position: static;
+    background: transparent;
+    padding: 0;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem; /* tighter than --space-md (2rem) */
+    inset: auto;
+    overflow: visible;
+  }
+
+  .nav-link {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    border: none;
+    padding: 2px 0;
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -2px;
+    width: 0; height: 2px;
+    background: var(--red);
+    transition: width var(--ease);
+  }
+
+  .nav-link:hover::after,
+  .nav-link[aria-current]::after { width: 100%; }
+}
+
+
+/* =============================================================
+   HERO
+   ============================================================= */
+
+.hero {
+  min-height: calc(100svh - var(--header-h));
+  /*
+    Subtle warm gradient — slightly cooler parchment at top-left
+    dissolving to the base white. Creates a sense of depth and
+    keeps the eye moving toward the content.
+  */
+  background: linear-gradient(155deg, var(--off-white) 0%, var(--white) 45%);
+  border-bottom: var(--border-lg);
+  display: flex;
+  align-items: stretch;
+}
+
+/* Mobile layout — stack content above image */
+.hero-layout {
+  display: grid;
+  width: 100%;
+  grid-template-areas:
+    "content"
+    "image";
+  grid-template-rows: auto 1fr;
+  padding: var(--space-lg) var(--space-md);
+  gap: var(--space-md);
+}
+
+.hero-accent-col { display: none; }
+
+.hero-content {
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);         /* tighter on mobile */
+  justify-content: center;
+  border-left: 6px solid var(--red);
+  padding-left: var(--space-sm); /* less indent on mobile */
+}
+
+.hero-eyebrow {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--grey);
+  max-width: none;
+}
+
+.hero-headline em {
+  font-style: italic;
+  color: var(--red);
+}
+
+.hero-body {
+  font-size: 1.05rem;
+  color: var(--grey-dark);
+  line-height: 1.75;
+}
+
+.hero-image-wrap {
+  grid-area: image;
+  margin: 0;
+  /*
+    Mobile: give the container a fixed height so the img's
+    height: 100% resolves correctly (% needs a defined parent height).
+  */
+  height: 300px;
+  overflow: hidden;
+}
+
+/* Desktop hero — three-column Mondrian layout */
+@media (min-width: 768px) {
+  .hero { display: block; }
+
+  .hero-layout {
+    min-height: calc(100svh - var(--header-h));
+    height: calc(100svh - var(--header-h));
+    grid-template-areas: "accent content image";
+    grid-template-columns: 80px 1fr 320px;
+    grid-template-rows: 1fr;
+    padding: 0;
+    gap: 0;
+  }
+
+  .hero-accent-col {
+    display: flex;
+    flex-direction: column;
+    grid-area: accent;
+    border-right: var(--border-lg);
+  }
+
+  .hero-accent-col .accent-block        { flex: 1; }
+  .hero-accent-col .accent-block--red   { flex: 1.6; border-bottom: var(--border-lg); }
+
+  .hero-content {
+    grid-area: content;
+    padding: var(--space-xl) var(--space-lg);
+    border-left: none;
+    border-right: var(--border-lg);
+    gap: var(--space-md); /* more breathing room on desktop */
+  }
+
+  .hero-image-wrap {
+    grid-area: image;
+    /* Reset mobile fixed height — let the grid row define the height */
+    height: 100%;
+    overflow: hidden;
+  }
+
+  /*
+    In the CSS Grid context the image wrap fills its grid cell
+    (grid-template-rows: 1fr). height: 100% on the img then
+    fills the wrap correctly.
+  */
+}
+
+@media (min-width: 1024px) {
+  .hero-layout {
+    grid-template-columns: 90px 1fr 380px;
+  }
+}
+
+.accent-block--red  { background: var(--red); }
+.accent-block--blue { background: var(--blue); }
+
+
+/* =============================================================
+   SECTIONS — SHARED
+   All content sections share padding, a max-width inner
+   container, and a 6px black border-bottom as divider.
+   ============================================================= */
+
+.section {
+  padding: var(--space-xl) 0;
+  border-bottom: var(--border-lg);
+}
+
+/* The centred content wrapper — matches across every section */
+.section-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+/* Coloured accent bar beside section heading */
+.section-accent {
+  flex-shrink: 0;
+  width: 5px;
+  min-height: 44px;
+  margin-top: 9px; /* optical alignment with Cormorant cap height */
+}
+
+.section-accent--red    { background: var(--red); }
+.section-accent--yellow { background: var(--yellow); }
+.section-accent--white  { background: rgba(248, 244, 238, 0.35); }
+
+.section-title { margin-bottom: 0; }
+
+
+/* =============================================================
+   WHAT I OFFER
+   ============================================================= */
+
+.section--offer {
+  background: var(--off-white);
+}
+
+.offer-grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.offer-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.offer-list {
+  margin-top: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.offer-list li {
+  padding: 0.4rem 0 0.4rem var(--space-sm);
+  border-left: 4px solid var(--red);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  .offer-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: var(--space-lg);
+  }
+}
+
+
+/* =============================================================
+   QUALIFICATIONS & TRAINING
+   ============================================================= */
+
+.qual-grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.qual-intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  color: var(--grey-dark);
+}
+
+.credential-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.credential-card {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: var(--space-md);
+  padding: 1.25rem 0 1.25rem var(--space-sm);
+  border-left: 4px solid transparent;
+  border-bottom: 1px solid rgba(28, 24, 21, 0.12);
+}
+
+.credential-card:last-child { border-bottom: none; }
+
+.credential-card--red    { border-left-color: var(--red); }
+.credential-card--blue   { border-left-color: var(--blue); }
+.credential-card--yellow { border-left-color: var(--yellow); }
+
+.credential-year {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  color: var(--grey);
+  padding-top: 3px;
+  line-height: 1.4;
+}
+
+.credential-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+/* Override global h3 uppercase for credential titles */
+.credential-body h3 {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.credential-body p {
+  font-size: 0.82rem;
+  color: var(--grey);
+  max-width: none;
+}
+
+@media (min-width: 768px) {
+  .qual-grid {
+    grid-template-columns: 1fr 2fr;
+    align-items: start;
+  }
+}
+
+
+/* =============================================================
+   GET IN TOUCH
+   ============================================================= */
+
+.section--contact {
+  background: var(--black);
+  color: var(--white);
+  border-bottom: none;
+  padding: 0;
+}
+
+/*
+  Constrain to --max-width so text aligns with every other section.
+  The black background remains full-bleed on .section--contact.
+*/
+.contact-layout {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  min-height: 420px;
+}
+
+.contact-content {
+  padding: var(--space-xl) var(--space-md);
+}
+
+.section--contact .section-title { color: var(--white); }
+
+.contact-intro {
+  color: rgba(248, 244, 238, 0.65);
+  margin-bottom: var(--space-lg);
+  font-size: 1.05rem;
+  max-width: 50ch;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Stack label above value on narrow screens */
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid rgba(248, 244, 238, 0.08);
+}
+
+.contact-item:last-child { border-bottom: none; }
+
+/* Two-column label / value from 480px up */
+@media (min-width: 480px) {
+  .contact-item {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    align-items: baseline;
+    gap: var(--space-sm);
+  }
+}
+
+.contact-item dt {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--yellow);
+}
+
+.contact-item dd {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.contact-item a {
+  color: var(--white);
+  text-decoration-color: rgba(248, 244, 238, 0.25);
+}
+.contact-item a:hover { color: var(--yellow); }
+
+.contact-item small {
+  display: block;
+  font-size: 0.8rem;
+  color: rgba(248, 244, 238, 0.4);
+  margin-top: 0.15rem;
+}
+
+/* Decorative Mondrian panel — desktop only */
+.contact-mondrian-wrap {
+  display: none;
+  border-left: var(--border-lg);
+}
+
+/*
+  Gap on the grid container acts as the black Mondrian lines —
+  no border juggling required.
+*/
+.contact-mondrian {
+  display: grid;
+  grid-template-areas:
+    "a a b"
+    "c d e"
+    "c f e";
+  grid-template-columns: 2fr 1fr 1.5fr;
+  grid-template-rows: 2fr 1fr 1fr;
+  gap: 6px;
+  background: var(--black);
+  height: 100%;
+}
+
+.cm-a { grid-area: a; background: var(--off-white); }
+.cm-b { grid-area: b; background: var(--red); }
+.cm-c { grid-area: c; background: var(--blue); }
+.cm-d { grid-area: d; background: var(--white); }
+.cm-e { grid-area: e; background: var(--yellow); }
+.cm-f { grid-area: f; background: var(--off-white); }
+
+@media (min-width: 768px) {
+  .contact-layout {
+    grid-template-columns: 3fr 2fr;
+  }
+
+  .contact-mondrian-wrap { display: block; }
+}
+
+
+/* =============================================================
+   FOOTER
+   ============================================================= */
+
+.site-footer {
+  background: var(--black);
+  color: rgba(248, 244, 238, 0.4);
+  border-top: 4px solid var(--yellow);
+  padding: var(--space-sm) 0;
+}
+
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-xs) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  text-align: center;
+}
+
+.footer-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--white);
+  max-width: none;
+}
+
+.footer-note,
+.footer-reg {
+  font-size: 0.68rem;
+  max-width: none;
+}
+
+@media (min-width: 768px) {
+  .footer-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+  }
+}
+
+
+/* =============================================================
+   REDUCED MOTION
+   ============================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  html          { scroll-behavior: auto; }
+  .reveal       { opacity: 1; transform: none; transition: none; }
+}
+
+
+/* =============================================================
+   FORCED COLOURS (Windows High Contrast)
+   ============================================================= */
+
+@media (forced-colors: active) {
+  .btn--primary       { border: 2px solid ButtonText; }
+  .offer-list li      { border-left-color: Highlight; }
+  .credential-card    { border-left-color: Highlight; }
+}
