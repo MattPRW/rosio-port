@@ -212,7 +212,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 18%; /* bias up: keeps face visible when column is very tall */
+  object-position: center 10%; /* bias up: keeps face visible when column is very tall */
 }
 
 /* "What I Offer" — landscape ratio, face in upper portion of frame */
