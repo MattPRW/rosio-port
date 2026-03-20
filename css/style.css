@@ -256,6 +256,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   height: var(--header-h);
   background: var(--black);
   border-bottom: var(--border-md); /* 4px — refined from 6px */
+  overflow: visible;
 }
 
 /* Thin accent line at the very top — sits above the black header background */
