@@ -598,10 +598,14 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 
 .offer-list li {
   padding: 0.4rem 0 0.4rem var(--space-sm);
-  border-left: 4px solid var(--blue);
+  border-left: 4px solid transparent;
   font-size: 0.9rem;
   font-weight: 500;
 }
+
+.offer-list-item--red    { border-left-color: var(--red); }
+.offer-list-item--blue   { border-left-color: var(--blue); }
+.offer-list-item--yellow { border-left-color: var(--yellow); }
 
 @media (min-width: 768px) {
   .offer-grid {

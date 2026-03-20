@@ -4,6 +4,18 @@
 
 'use strict';
 
+/* --- Colour accent cycling --- */
+const CYCLE = ['blue', 'red', 'yellow'];
+
+document.querySelectorAll('.credential-card').forEach((card, i) => {
+  card.classList.add(`credential-card--${CYCLE[i % 3]}`);
+});
+
+document.querySelectorAll('.offer-list li').forEach((item, i) => {
+  item.classList.add(`offer-list-item--${CYCLE[i % 3]}`);
+});
+
+
 /* --- Footer year --- */
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
