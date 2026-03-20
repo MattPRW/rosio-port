@@ -598,7 +598,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 
 .offer-list li {
   padding: 0.4rem 0 0.4rem var(--space-sm);
-  border-left: 4px solid var(--red);
+  border-left: 4px solid var(--blue);
   font-size: 0.9rem;
   font-weight: 500;
 }
