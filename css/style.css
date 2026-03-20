@@ -744,6 +744,11 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
     grid-template-columns: 1fr 2fr;
     align-items: start;
   }
+
+  .prior-training {
+    grid-column: 2;
+    margin-top: 0;
+  }
 }
 
 
@@ -800,7 +805,6 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 
 
 .prior-training {
-  grid-column: 1 / -1;
   margin-top: var(--space-lg);
   padding: var(--space-md);
   background: var(--white);
