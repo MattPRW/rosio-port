@@ -402,6 +402,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   .nav-menu {
     display: flex !important;
     position: static;
+    width: auto;
     background: transparent;
     padding: 0;
     flex-direction: row;
@@ -414,6 +415,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   }
 
   .nav-link {
+    display: inline;
     font-family: var(--font-display);
     font-size: 0.7rem;
     font-style: normal;
