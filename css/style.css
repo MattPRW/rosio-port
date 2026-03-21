@@ -363,18 +363,18 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 }
 
 .nav-backdrop {
-  display: none;
   position: fixed;
   inset: var(--header-h) 0 0 0;
   background: rgba(28, 24, 21, 0.5);
   z-index: 180;
   opacity: 0;
+  pointer-events: none;
   transition: opacity 300ms ease;
 }
 
 .nav-backdrop.is-open {
-  display: block;
   opacity: 1;
+  pointer-events: auto;
 }
 
 .nav-link {
