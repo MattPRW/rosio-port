@@ -704,7 +704,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   border-left: 4px solid transparent;
   font-size: 0.95rem;
   line-height: 1.75;
-  color: var(--grey-dark);
+  color: var(--black);
   border-bottom: 1px solid rgba(28, 24, 21, 0.08);
 }
 
@@ -831,7 +831,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   border-left: 4px solid transparent;
   font-size: 0.95rem;
   line-height: 1.75;
-  color: var(--grey-dark);
+  color: var(--black);
   border-bottom: 1px solid rgba(28, 24, 21, 0.08);
 }
 
