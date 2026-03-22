@@ -609,7 +609,8 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 
 .section-accent--accent    { background: var(--accent); }
 .section-accent--yellow { background: var(--yellow); }
-.section-accent--white  { background: rgba(248, 244, 238, 0.35); }
+.section-accent--blue   { background: var(--blue); }
+.section-accent--white  { background: var(--off-white); }
 
 .section-title { margin-bottom: 0; }
 
@@ -665,15 +666,6 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   filter: saturate(0.7) sepia(0.2) brightness(0.8);
 }
 
-@media (max-width: 767px) {
-  .offer-accent-block--image {
-    display: none;
-  }
-
-  .offer-accent-col {
-    width: 40px;
-  }
-}
 
 .offer-body {
   display: flex;
@@ -736,17 +728,23 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 
 
 
+
+
 /* =============================================================
    ABOUT ME
    ============================================================= */
 
 .section--about {
+  background: var(--white);
+}
+
+.section--qualifications {
   background: var(--off-white);
 }
 
 .about-layout {
   display: grid;
-  grid-template-columns: 60px 1fr;
+  grid-template-columns: 1fr 4px;
   gap: 0;
 }
 
@@ -754,20 +752,22 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   .about-layout {
     grid-template-columns: 280px 1fr;
   }
+
+  .about-accent-col {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .about-body {
+    grid-column: 2;
+    grid-row: 1;
+  }
 }
 
 @media (min-width: 1024px) {
   .about-layout {
     grid-template-columns: 320px 1fr;
   }
-}
-
-.about-body {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  padding-right: 0;
-  padding-left: var(--space-lg);
 }
 
 .about-accent-col {
@@ -782,15 +782,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 
 .about-accent-block--accent  { background: var(--accent); flex: 1; }
 .about-accent-block--yellow  { background: var(--yellow); flex: 1; }
-
-.about-accent-block--image {
-  flex: 3;
-  overflow: hidden;
-  position: relative;
-  border-top: var(--border-lg);
-  border-bottom: var(--border-lg);
-  margin: 0;
-}
+.about-accent-block--image   { flex: 3; overflow: hidden; position: relative; border-top: var(--border-lg); border-bottom: var(--border-lg); margin: 0; }
 
 .about-accent-photo {
   position: absolute;
@@ -799,25 +791,84 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   height: 100%;
   object-fit: cover;
   object-position: center 15%;
-  filter: saturate(0.7) sepia(0.2);
+  filter: saturate(0.7) sepia(0.2) brightness(0.8);
+}
+
+.about-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding-left: var(--space-lg);
+  padding-right: 0;
+}
+
+.about-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-item {
+  padding: var(--space-sm) 0 var(--space-sm) var(--space-sm);
+  border-left: 4px solid transparent;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--grey-dark);
+  border-bottom: 1px solid rgba(28, 24, 21, 0.08);
+}
+
+.about-item:last-child {
+  border-bottom: none;
+}
+
+.about-item--accent  { border-left-color: var(--accent); }
+.about-item--blue    { border-left-color: var(--blue); }
+.about-item--yellow  { border-left-color: var(--yellow); }
+
+.about-item-lead {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  color: var(--black);
+  margin-bottom: 0.3rem;
 }
 
 @media (max-width: 767px) {
+  .offer-layout {
+    grid-template-columns: 1fr 4px;
+  }
+
+  .about-layout {
+    grid-template-columns: 1fr 4px;
+  }
+
+  .offer-accent-col,
+  .about-accent-col {
+    border: none;
+    min-width: 0;
+  }
+
+  .offer-accent-block--image,
   .about-accent-block--image {
     display: none;
   }
 
-  .about-accent-col {
-    width: 40px;
+  .offer-accent-block,
+  .about-accent-block {
+    border: none;
+    min-width: 0;
   }
-}
 
-.about-block h3 {
-  text-transform: none;
-  letter-spacing: 0;
-  font-size: 0.95rem;
-  font-weight: 700;
-  margin-bottom: 0.4rem;
+  .offer-body {
+    padding-left: var(--space-md);
+    padding-right: var(--space-sm);
+  }
+
+  .about-body {
+    padding-left: var(--space-md);
+    padding-right: var(--space-sm);
+  }
 }
 
 
