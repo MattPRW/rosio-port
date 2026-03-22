@@ -653,9 +653,11 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 .offer-accent-block--accent  { background: var(--accent); flex: 1; }
 .offer-accent-block--blue    { background: var(--blue);   flex: 1; }
 .offer-accent-block--yellow  { background: var(--yellow); flex: 1; }
-.offer-accent-block--image   { flex: 3; overflow: hidden; border-top: var(--border-lg); border-bottom: var(--border-lg); margin: 0; }
+.offer-accent-block--image   { flex: 3; overflow: hidden; position: relative; border-top: var(--border-lg); border-bottom: var(--border-lg); margin: 0; }
 
 .offer-accent-photo {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -784,12 +786,15 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 .about-accent-block--image {
   flex: 3;
   overflow: hidden;
+  position: relative;
   border-top: var(--border-lg);
   border-bottom: var(--border-lg);
   margin: 0;
 }
 
 .about-accent-photo {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
