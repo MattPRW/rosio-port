@@ -67,7 +67,7 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 
 if (!prefersReducedMotion) {
   const revealTargets = document.querySelectorAll(
-    '.credential-card, .offer-item, .about-block, .offer-image-wrap, .contact-item, .testimonial-card, .section-header'
+    '.credential-card, .offer-item, .about-block, .contact-item, .testimonial-card, .section-header'
   );
 
   const revealObserver = new IntersectionObserver((entries) => {
