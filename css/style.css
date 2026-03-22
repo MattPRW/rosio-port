@@ -216,7 +216,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   filter: saturate(0.7) sepia(0.2);
 }
 
-/* "What I Offer" — landscape ratio, face in upper portion of frame */
+/* "What I Offer" / "About Me" — landscape ratio, sticky on desktop */
 .offer-image-wrap {
   margin: 0;
   border: var(--border-md);
@@ -655,6 +655,16 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 .offer-item--blue   { border-left-color: var(--blue); }
 .offer-item--yellow { border-left-color: var(--yellow); }
 
+.offer-item-lead {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  color: var(--black);
+  margin-bottom: 0.3rem;
+}
+
 .offer-subheading {
   font-family: var(--font-serif);
   font-style: italic;
@@ -678,6 +688,12 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
     grid-template-columns: 1fr 1fr;
     align-items: start;
     gap: var(--space-lg);
+  }
+
+  .offer-image-wrap {
+    position: sticky;
+    top: calc(var(--header-h) + var(--space-md));
+    align-self: start;
   }
 }
 
