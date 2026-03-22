@@ -539,7 +539,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   }
 
   .hero-accent-col .accent-block        { flex: 1; }
-  .hero-accent-col .accent-block--accent   { flex: 1.6; border-bottom: var(--border-lg); }
+  .hero-accent-col .accent-block--blue  { flex: 1.6; border-bottom: var(--border-lg); }
 
   .hero-content {
     grid-area: content;
@@ -570,7 +570,8 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 }
 
 .accent-block--accent  { background: var(--accent); }
-.accent-block--blue { background: var(--blue); }
+.accent-block--blue    { background: var(--blue); }
+.accent-block--yellow  { background: var(--yellow); }
 
 
 /* =============================================================
