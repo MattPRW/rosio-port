@@ -508,7 +508,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   font-size: 0.68rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--grey);
+  color: var(--grey-dark);
   max-width: none;
 }
 
@@ -730,7 +730,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   font-family: var(--font-serif);
   font-style: italic;
   font-size: 1.1rem;
-  color: var(--grey);
+  color: var(--grey-dark);
   margin-bottom: var(--space-sm);
 }
 
@@ -931,7 +931,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   font-weight: 700;
   font-size: 0.65rem;
   letter-spacing: 0.06em;
-  color: var(--grey);
+  color: var(--grey-dark);
   padding-top: 3px;
   line-height: 1.4;
 }
@@ -952,7 +952,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 
 .credential-body p {
   font-size: 0.82rem;
-  color: var(--grey);
+  color: var(--grey-dark);
   max-width: none;
 }
 
@@ -1013,7 +1013,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--grey);
+  color: var(--grey-dark);
 }
 
 
