@@ -45,6 +45,11 @@
   padding: 0;
 }
 
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 html {
   scroll-behavior: smooth;
   /* Offset anchor jumps so sticky header never obscures a section heading */
@@ -64,18 +69,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* --- Page frame — constrains content on very wide screens --- */
+/* --- Page frame --- */
 .page-frame {
-  max-width: 1440px;
-  margin: 0 auto;
+  width: 100%;
+  min-width: 100%;
+  overflow-x: hidden;
   background: var(--white);
   position: relative;
-}
-
-@media (min-width: 1441px) {
-  .page-frame {
-    box-shadow: -6px 0 0 var(--black), 6px 0 0 var(--black);
-  }
 }
 
 img, svg { display: block; max-width: 100%; }
