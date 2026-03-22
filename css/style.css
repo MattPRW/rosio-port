@@ -8,10 +8,10 @@
 /* --- Design Tokens --- */
 :root {
   /* Softened primary palette — warm, therapy-appropriate */
-  --accent:      #8E4A49;   /* muted burgundy    */
-  --accent-dark: #7A3A39;   /* deeper burgundy — hover state */
-  --blue:      #3E5F2C;   /* deep forest green */
-  --yellow:    #D4B896;   /* warm sand         */
+  --accent:      #A85C4A;   /* muted brick       */
+  --accent-dark: #8F4A38;   /* deeper brick — hover state */
+  --blue:      #4A6E8A;   /* dusty slate blue  */
+  --yellow:    #C49A3C;   /* warm ochre        */
   --black:     #1C1815;   /* warm near-black   */
   --white:     #F8F4EE;   /* warm parchment    */
   --off-white: #EDE8DF;   /* warm light ground */
