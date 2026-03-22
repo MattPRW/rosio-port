@@ -111,7 +111,11 @@ if (sections.length && navLinks.length) {
         const id = entry.target.id;
         navLinks.forEach(link => {
           const isActive = link.getAttribute('href') === `#${id}`;
-          link.toggleAttribute('aria-current', isActive);
+          if (isActive) {
+            link.setAttribute('aria-current', 'page');
+          } else {
+            link.removeAttribute('aria-current');
+          }
         });
       }
     });
