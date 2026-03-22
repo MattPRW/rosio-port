@@ -744,19 +744,19 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 
 .about-layout {
   display: grid;
-  grid-template-columns: 1fr 60px;
+  grid-template-columns: 60px 1fr;
   gap: 0;
 }
 
 @media (min-width: 768px) {
   .about-layout {
-    grid-template-columns: 1fr 280px;
+    grid-template-columns: 280px 1fr;
   }
 }
 
 @media (min-width: 1024px) {
   .about-layout {
-    grid-template-columns: 1fr 320px;
+    grid-template-columns: 320px 1fr;
   }
 }
 
@@ -764,7 +764,8 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
-  padding-right: var(--space-lg);
+  padding-right: 0;
+  padding-left: var(--space-lg);
 }
 
 .about-accent-col {
