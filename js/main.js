@@ -93,7 +93,7 @@ if (!prefersReducedMotion) {
   revealTargets.forEach((el, i) => {
     el.classList.add('reveal');
     // Stagger items within lists
-    if (el.closest('.credential-list') || el.closest('.offer-list')) {
+    if (el.closest('.credential-list') || el.closest('.offer-list') || el.closest('.about-list')) {
       el.dataset.revealDelay = (i % 10) * 80;
     }
     revealObserver.observe(el);

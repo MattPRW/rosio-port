@@ -72,7 +72,8 @@ body {
 /* --- Page frame --- */
 .page-frame {
   width: 100%;
-  min-width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
   overflow-x: clip;
   background: var(--white);
   position: relative;
@@ -441,6 +442,21 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 
   .nav-link:hover::after,
   .nav-link[aria-current]::after { width: 100%; }
+
+  .nav-link--cta {
+    border: 1px solid rgba(248, 244, 238, 0.4);
+    padding: 0.4rem 1rem;
+    transition: border-color var(--ease), color var(--ease);
+  }
+
+  .nav-link--cta:hover {
+    border-color: var(--yellow);
+    color: var(--yellow);
+  }
+
+  .nav-link--cta::after {
+    display: none;
+  }
 }
 
 
@@ -459,6 +475,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   border-bottom: var(--border-lg);
   display: flex;
   align-items: stretch;
+  position: relative;
 }
 
 /* Mobile layout — stack content above image */
@@ -645,6 +662,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   display: flex;
   flex-direction: column;
   border: var(--border-lg);
+  min-height: 480px;
 }
 
 .offer-accent-block {
@@ -774,6 +792,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
   display: flex;
   flex-direction: column;
   border: var(--border-lg);
+  min-height: 480px;
 }
 
 .about-accent-block {
@@ -956,6 +975,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 .testimonial-list {
   display: grid;
   gap: var(--space-md);
+  align-items: start;
 }
 
 @media (min-width: 768px) {
@@ -1079,7 +1099,7 @@ h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 
 .contact-item a {
   color: var(--white);
-  text-decoration-color: rgba(248, 244, 238, 0.25);
+  text-decoration-color: rgba(248, 244, 238, 0.4);
 }
 .contact-item a:hover { color: var(--yellow); }
 
